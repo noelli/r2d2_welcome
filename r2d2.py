@@ -75,21 +75,19 @@ if __name__ == '__main__':
     
     i = True
     while i:
+        x = input("Beenden? Dann > 0")
         try:
             hub = MoveHub(connection=connection)
         except err:
             log.warning("%s", err)
         finally:
-            i = False
-
-    i = True
-    while i:
-        x = input("Beenden? Dann > 0")
-        if x > 0:
-            i = False
-        try:
-            led_colors(hub)
-        except err:
-            log.warning("%s", err)
+            while i:
+                x = input("Beenden? Dann > 0")
+                if x > 0:
+                    i = False
+                try:
+                    led_colors(hub)
+                except err:
+                    log.warning("%s", err)
     hub.disconnect()
 
