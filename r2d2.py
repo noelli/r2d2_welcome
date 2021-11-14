@@ -68,7 +68,8 @@ def connection_from_url(url):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, format='%(relativeCreated)d\t%(levelname)s\t%(name)s\t%(message)s')
     try:
-        connection = get_connection_bleak(hub_name=MoveHub.DEFAULT_NAME) # connection_from_url("bluepy://")
+        import local_settings
+        connection = get_connection_bluepy(hub_mac=local_settings.mac) # connection_from_url("bluepy://")
     except ValueError as err:
         log.warning("%s", err)
     
